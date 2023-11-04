@@ -30,6 +30,11 @@ class Events extends Model
         'date',
         'priority',
         'status',
+        'type',
+        'where',
+        'starts',
+        'ends',
+        'google_id',
     ];
 
     public function getActivitylogOptions(): LogOptions
@@ -53,6 +58,11 @@ class Events extends Model
                 'date',
                 'priority',
                 'status',
+                'type',
+                'where',
+                'starts',
+                'ends',
+                'google_id',
             ]);
     }
 

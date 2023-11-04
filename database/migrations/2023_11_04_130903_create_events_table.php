@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->nullable()->default('events_app');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->text('description_short')->nullable();
             $table->integer('category')->nullable();
             $table->string('image')->nullable();
+            $table->string('where')->nullable();
+            $table->string('google_id')->nullable();
             $table->text('files')->nullable();
             $table->string('link_facebook')->nullable();
             $table->string('link_website')->nullable();
@@ -28,6 +31,8 @@ return new class extends Migration
             $table->integer('rvsp_needed')->nullable();
             $table->integer('tickets_needed')->nullable();
             $table->dateTime('date')->nullable();
+            $table->dateTime('starts')->nullable();
+            $table->dateTime('ends')->nullable();
             $table->integer('priority')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();

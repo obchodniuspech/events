@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'roles'], static function () {
 });
 
 //webhooks
-Route::post('webhook-ifttt', [WebhooksController::class, 'saveToFile']);
+Route::post('webhook-ifttt', [WebhooksController::class, 'save']);
 
 Route::group(['middleware' => 'auth', 'prefix' => 'events'], static function () {
     Route::get('/', [EventsController::class, 'index'])->name('events.index');
