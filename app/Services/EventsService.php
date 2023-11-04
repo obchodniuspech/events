@@ -28,18 +28,18 @@ final class EventsService {
         return $events;
     }
 
-    public function saveFromIftttWebook(array $data) {
+    public function saveFromIftttWebook($data) {
 
         $webhookData = [
-            'name' => $data['title'],
+            'name' => $data->title,
             'type' => 'google_import',
-            'google_id' => Str::replace('https://www.google.com/calendar/event?eid=', '', $data['url']),
-            'description' => $data['description'],
-            'where' => $data['where'],
-            'starts' => Carbon::parse($data['starts'])->format("Y-m-d H:i:s"),
-            'ends' => Carbon::parse($data['ends'])->format("Y-m-d H:i:s"),
-            'link_other' => $data['url'],
-            'created_at' => $data['created_at'],
+            'google_id' => Str::replace('https://www.google.com/calendar/event?eid=', '', $data->url),
+            'description' => $data->description,
+            'where' => $data->where,
+            'starts' => Carbon::parse($data->starts)->format("Y-m-d H:i:s"),
+            'ends' => Carbon::parse($data->ends)->format("Y-m-d H:i:s"),
+            'link_other' => $data->url,
+            'created_at' => $data->created_at,
         ];
 
         Events::create($webhookData);
