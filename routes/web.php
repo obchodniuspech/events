@@ -5,6 +5,7 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\WebhooksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +47,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'roles'], static function () {
     Route::post('/save', [RolesController::class, 'store'])->name('roles.save');
 });
 
+//webhooks
+Route::get('webhook-ifttt', [WebhooksController::class, 'saveToFile'])->name('webhook.ifttt');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'events'], static function () {
     Route::get('/', [EventsController::class, 'index'])->name('events.index');
