@@ -21,128 +21,161 @@
 
                     @endcan
 
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Všechny události</button>
-                            </li>
-                            @foreach($categories AS $category)
 
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-{{$category->url}}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{$category->url}}" type="button" role="tab" aria-controls="pills-{{$category->url}}" aria-selected="false">{{$category->name}}</button>
-                                </li>
-                            @endforeach
-                        </ul>
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Všechny</div>
-                            @foreach($categories AS $category)
-                                <div class="tab-pane fade" id="pills-{{$category->url}}" role="tabpanel" aria-labelledby="pills-{{$category->url}}-tab">{{$category->name}}</div>
-                            @endforeach
-                        </div>
+                        <div class="event-schedule-area-two bg-color pad100">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <ul class="nav custom-tab" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active show" data-bs-toggle="pill" data-bs-target="#events-home-tab" type="button" role="tab" aria-controls="events-home-tab" aria-selected="false">Všechny události</a>
+                                            </li>
 
+                                            @foreach($categories AS $category)
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="{{$category->id}}-tab}" data-bs-toggle="pill" data-bs-target="#events-{{$category->id}}-tab" type="button" role="tab" aria-controls="events-{{$category->id}}-tab" aria-selected="false">{{$category->name}}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
 
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12 col-sm-offset-2 col-sm-8">
-                                    <ul class="event-list">
-                                        <li>
-                                            <time datetime="2014-07-20">
-                                                <span class="day">4</span>
-                                                <span class="month">Jul</span>
-                                                <span class="year">2014</span>
-                                                <span class="time">ALL DAY</span>
-                                            </time>
-                                            <img alt="Independence Day" src="https://farm4.staticflickr.com/3100/2693171833_3545fb852c_q.jpg" />
-                                            <div class="info">
-                                                <h2 class="title">Independence Day</h2>
-                                                <p class="desc">United States Holiday</p>
-                                            </div>
-                                            <div class="social">
-                                                <ul>
-                                                    <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                                                    <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                                                    <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                        <div class="tab-content" id="myTabContent">
 
-                                        <li>
-                                            <time datetime="2014-07-20 0000">
-                                                <span class="day">8</span>
-                                                <span class="month">Jul</span>
-                                                <span class="year">2014</span>
-                                                <span class="time">12:00 AM</span>
-                                            </time>
-                                            <div class="info">
-                                                <h2 class="title">One Piece Unlimited World Red</h2>
-                                                <p class="desc">PS Vita</p>
-                                                <ul>
-                                                    <li style="width:50%;"><a href="#website"><span class="fa fa-globe"></span> Website</a></li>
-                                                    <li style="width:50%;"><span class="fa fa-money"></span> $39.99</li>
-                                                </ul>
-                                            </div>
-                                            <div class="social">
-                                                <ul>
-                                                    <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                                                    <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                                                    <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                                <div class="tab-pane fade show active" id="events-home-tab" role="tabpanel" aria-labelledby="events-home-tab">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="text-center" scope="col">Datum</th>
+                                                                <th scope="col">Speakers</th>
+                                                                <th scope="col">Session</th>
+                                                                <th scope="col">Venue</th>
+                                                                <th class="text-center" scope="col">Venue</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @isset($events)
+                                                                @foreach($events AS $event)
+                                                                    <tr class="inner-box">
+                                                                        <th scope="row">
+                                                                            <div class="event-date">
+                                                                                <span>16</span>
+                                                                                <p>Novembar</p>
+                                                                            </div>
+                                                                        </th>
+                                                                        <td>
+                                                                            <div class="event-img">
+                                                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" />
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="event-wrap">
+                                                                                <h3><a href="#">{{$event->name}}</a></h3>
+                                                                                <div class="meta">
+                                                                                    <div class="organizers">
+                                                                                        <a href="#">Aslan Lingker</a>
+                                                                                    </div>
+                                                                                    <div class="categories">
+                                                                                        <a href="#">Inspire</a>
+                                                                                    </div>
+                                                                                    <div class="time">
+                                                                                        <span>05:35 AM - 08:00 AM 2h 25'</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="r-no">
+                                                                                <span>Room B3</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="primary-btn">
+                                                                                <a class="btn btn-primary" href="#">Read More</a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @endisset
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
 
-                                        <li>
-                                            <time datetime="2014-07-20 2000">
-                                                <span class="day">20</span>
-                                                <span class="month">Jan</span>
-                                                <span class="year">2014</span>
-                                                <span class="time">8:00 PM</span>
-                                            </time>
-                                            <img alt="My 24th Birthday!" src="https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg" />
-                                            <div class="info">
-                                                <h2 class="title">Mouse0270's 24th Birthday!</h2>
-                                                <p class="desc">Bar Hopping in Erie, Pa.</p>
-                                                <ul>
-                                                    <li style="width:33%;">1 <span class="glyphicon glyphicon-ok"></span></li>
-                                                    <li style="width:34%;">3 <span class="fa fa-question"></span></li>
-                                                    <li style="width:33%;">103 <span class="fa fa-envelope"></span></li>
-                                                </ul>
+                                        @foreach($categories AS $category)
+                                            <div class="tab-pane fade" id="events-{{$category->id}}-tab" role="tabpanel" aria-labelledby="{{$category->id}}-tab">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="text-center" scope="col">Datum</th>
+                                                            <th scope="col">Speakers</th>
+                                                            <th scope="col">Session</th>
+                                                            <th scope="col">Venue</th>
+                                                            <th class="text-center" scope="col">Venue</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @isset($eventsGrouped[$category->id])
+                                                            @foreach($eventsGrouped[$category->id] AS $event)
+                                                                <tr class="inner-box">
+                                                                    <th scope="row">
+                                                                        <div class="event-date">
+                                                                            <span>16</span>
+                                                                            <p>Novembar</p>
+                                                                        </div>
+                                                                    </th>
+                                                                    <td>
+                                                                        <div class="event-img">
+                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" />
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="event-wrap">
+                                                                            <h3><a href="#">{{$event->name}}</a></h3>
+                                                                            <div class="meta">
+                                                                                <div class="organizers">
+                                                                                    <a href="#">Aslan Lingker</a>
+                                                                                </div>
+                                                                                <div class="categories">
+                                                                                    <a href="#">Inspire</a>
+                                                                                </div>
+                                                                                <div class="time">
+                                                                                    <span>05:35 AM - 08:00 AM 2h 25'</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="r-no">
+                                                                            <span>Room B3</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="primary-btn">
+                                                                            <a class="btn btn-primary" href="#">Read More</a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        @endisset
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
-                                            <div class="social">
-                                                <ul>
-                                                    <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                                                    <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                                                    <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
 
-                                        <li>
-                                            <time datetime="2014-07-31 1600">
-                                                <span class="day">31</span>
-                                                <span class="month">Jan</span>
-                                                <span class="year">2014</span>
-                                                <span class="time">4:00 PM</span>
-                                            </time>
-                                            <img alt="Disney Junior Live On Tour!" src="http://www.thechaifetzarena.com/images/main/DL13_PiratePrincess_thumb.jpg" />
-                                            <div class="info">
-                                                <h2 class="title">Disney Junior Live On Tour!</h2>
-                                                <p class="desc"> Pirate and Princess Adventure</p>
-                                                <ul>
-                                                    <li style="width:33%;">$49.99 <span class="fa fa-male"></span></li>
-                                                    <li style="width:34%;">$29.99 <span class="fa fa-child"></span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="social">
-                                                <ul>
-                                                    <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                                                    <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                                                    <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                        @endforeach
+                                        </div>
+
+                                        <div class="primary-btn text-center">
+                                            <a href="#" class="btn btn-primary">Download Schedule</a>
+                                        </div>
+                                    </div>
+                                    <!-- /col end-->
                                 </div>
+                                <!-- /row end-->
                             </div>
                         </div>
+
 
                 </div>
             </div>
