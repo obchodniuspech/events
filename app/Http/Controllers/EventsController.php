@@ -11,10 +11,15 @@ class EventsController extends Controller
     public function index(EventsService $eventsService): View
     {
 
+        $eventsAll = $eventsService->getEvents(true);
+        $eventsGrouped = $eventsService->getEvents(true, true);
+
         $eventCategories = $eventsService->getCategories();
 
         return view('dashboard', [
-           'categories' => $eventCategories,
+            'events' => $eventsAll,
+            'eventsGrouped' => $eventsGrouped,
+            'categories' => $eventCategories,
         ]);
     }
 }
