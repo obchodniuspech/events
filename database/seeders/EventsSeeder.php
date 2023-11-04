@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+
+use App\Models\Events;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,9 +15,9 @@ class EventsSeeder extends Seeder
     public function run(): void
     {
 
-        DB::table('events')->insert([
+        Events::create([
             'name' => 'Test akce',
-            'description' => 'Test popis,
+            'description' => 'Test popis'
         ]);
 
     }
