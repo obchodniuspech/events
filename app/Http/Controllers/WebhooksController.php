@@ -15,7 +15,7 @@ class WebhooksController extends Controller
 
     public function save(Request $request, EventsService $eventsService): void
     {
-        $data = json_decode($request->getContent());
+        $data = json_decode(json_encode($request->all()));
 
         $eventsService->saveFromIftttWebook($data);
     }
