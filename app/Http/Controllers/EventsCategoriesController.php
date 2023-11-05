@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEventsCategoriesRequest;
 use App\Http\Requests\UpdateEventsCategoriesRequest;
 use App\Models\EventsCategories;
+use App\Services\EventsService;
+use Illuminate\View\View;
 
 class EventsCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(EventsService $eventsService): View
     {
-        //
+        $categories = $eventsService->getCategories();
+        return view('events.index-categories', ['categories' => $categories]);
     }
 
     /**

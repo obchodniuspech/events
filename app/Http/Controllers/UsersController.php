@@ -63,12 +63,12 @@ class UsersController extends Controller
     public function store(Request $req): RedirectResponse
     {
 
-        $req['status'] = $req['status'] === 'on';
+        $req->status = ($req->status === 'on') ? 1 : 0;
 
         $data = [[
             'name' => $req->name,
             'email' => $req->email,
-            'status' => $req->status === 'on',
+            'status' => $req->status ?? 0,
         ]];
 
         if (isset($req->password)) {
@@ -86,9 +86,14 @@ class UsersController extends Controller
 
         // All current roles will be removed from the user and replaced by the array given
         if ($user !== 1 && $user !== Auth::user()->id) {
-            User::find($user)->syncRoles([$req->roleName]);
+            $account = User::find($user)->syncRoles([$req->roleName]);
+        }
+
+        if (!$account->tokens()->where('personal_access_tokens.name', 'calendar')->first()) {
+            $account->createToken('calendar');
         }
 
         return redirect(route('users'));
     }
+
 }

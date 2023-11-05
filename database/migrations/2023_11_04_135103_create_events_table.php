@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->text('description_short')->nullable();
-            $table->integer('category')->nullable();
+            $table->unsignedBigInteger('category')->nullable();
+            $table->foreign('category')->references('id')->on('events_categories');
             $table->string('image')->nullable();
             $table->string('where')->nullable();
             $table->string('google_id')->nullable();
@@ -28,13 +29,16 @@ return new class extends Migration
             $table->string('link_tickets')->nullable();
             $table->decimal('price', 10, 2)->nullable();
             $table->boolean('share_enable')->default(false);
-            $table->integer('rvsp_needed')->nullable();
-            $table->integer('tickets_needed')->nullable();
+            $table->boolean('rvsp_needed')->nullable();
+            $table->boolean('tickets_needed')->nullable();
+            $table->boolean('comments_enable')->nullable();
             $table->dateTime('date')->nullable();
             $table->dateTime('starts')->nullable();
             $table->dateTime('ends')->nullable();
             $table->integer('priority')->nullable();
             $table->boolean('status')->default(true);
+            $table->unsignedBigInteger('user_id')->default(true);
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

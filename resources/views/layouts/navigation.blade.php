@@ -38,6 +38,12 @@
                             {{ __('Můj profil') }}
                         </x-dropdown-link>
 
+                        @can('Správa kategorií')
+                            <x-dropdown-link :href="route('events.categories.index')">
+                                {{ __('Správa kategorií') }}
+                            </x-dropdown-link>
+                        @endcan
+
                         @can('Správa uživatelů')
                             <x-dropdown-link :href="route('users')">
                                 {{ __('Správa uživatelů') }}

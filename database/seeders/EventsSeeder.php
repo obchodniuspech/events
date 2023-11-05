@@ -17,7 +17,10 @@ class EventsSeeder extends Seeder
 
         Events::create([
             'name' => 'Test akce',
-            'description' => 'Test popis'
+            'description' => 'Test popis',
+            'starts' => '2023-11-17T10:00:00',
+            'ends' => '2023-11-17T12:00:00',
+            'where' => 'Václavské náměstí',
         ]);
 
     }

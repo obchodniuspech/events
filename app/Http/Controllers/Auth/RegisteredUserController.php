@@ -46,6 +46,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        $user->createToken('calendar');
+
         return redirect(RouteServiceProvider::HOME);
     }
 }

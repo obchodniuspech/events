@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\EventsCategoriesController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WebhooksController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +35,19 @@ Route::group(['middleware' => 'auth', 'prefix' => 'users'], static function () {
     Route::get('/new/', [UsersController::class, 'edit'])->name('users.new');
     Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
     Route::post('/save', [UsersController::class, 'store'])->name('users.save');
+    Route::post('/token/create', [UsersController::class, 'createToken'])->name('users.api.generate.token');
+});
+
+Route::group(['middleware' => 'auth', 'prefix' => 'events'], static function () {
+    Route::get('/edit/{id?}', [EventsController::class, 'edit'])->name('events.edit');
+    Route::get('/detail/{id}', [EventsController::class, 'detail'])->name('events.detail');
+    Route::post('/save', [EventsController::class, 'save'])->name('events.save');
+});
+
+Route::group(['middleware' => 'auth', 'prefix' => 'events-categories'], static function () {
+    Route::get('/', [EventsCategoriesController::class, 'index'])->name('events.categories.index');
+    Route::get('/edit/{id?}', [EventsController::class, 'edit'])->name('events.categories.edit');
+    Route::post('/save', [EventsController::class, 'save'])->name('events.categories.save');
 });
 
 Route::group(['middleware' => 'auth', 'prefix' => 'activity-log'], static function () {

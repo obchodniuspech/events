@@ -49,6 +49,12 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{$timestamp}}">
         <script src="{{ asset('js/main.js') }}?v={{$timestamp}}"></script>
 
+        <!-- Include stylesheet -->
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+        <!-- Include the Quill library -->
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -69,4 +75,6 @@
             </main>
         </div>
     </body>
+
+
 </html>
