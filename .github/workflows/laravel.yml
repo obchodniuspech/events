@@ -23,7 +23,7 @@ jobs:
     - name: Generate key
       run: php artisan key:generate
     - name: Create storage directories
-      run: mkdir -p storage/{framework,framework/cache,app,framework/sessions,framework/testing,logs}
+      run: mkdir storage && mkdir -p storage/{framework,framework/cache,app,framework/sessions,framework/testing,logs}
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Create Database
