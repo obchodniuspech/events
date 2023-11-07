@@ -39,11 +39,7 @@ jobs:
     - name: npm
       run: npm i && npm run build
     - name: Create storage directories
-      run: mkdir -p storage/framework/{app,logs,sessions,cache,testing} && chmod -R 777 storage
-    - name: Set up SQLite
-      run: |
-        mkdir -p database
-        touch database/database.sqlite
+      run: mkdir -p storage/framework/{app,logs,sessions,cache,views,testing} && chmod -R 777 storage
     - name: Cache Composer dependencies
       run: composer install --prefer-dist
     - name: Execute tests (Unit and Feature tests) via PHPUnit
