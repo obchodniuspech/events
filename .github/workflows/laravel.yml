@@ -23,7 +23,9 @@ jobs:
     - name: Generate key
       run: php artisan key:generate
     - name: Create storage directories
-      run: mkdir -p storage && mkdir -p storage/{framework,app,logs} && mkdir -p storage/{framework/sessions,framework/cache,framework/testing,framework/logs} && chmod -R 777 storage
+      run: mkdir storage/framework/{sessions,views,cache}
+    - name: Change storage permissions
+      run: chmod -R 777 storage
     - name: Set up SQLite
       run: |
         mkdir -p database
